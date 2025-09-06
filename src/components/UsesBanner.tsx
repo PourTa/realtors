@@ -1,6 +1,5 @@
 import React from "react";
 
-// If you’re using public/ images, use root-relative URLs:
 const uses = [
   { image: "/images/website_assets-01.webp", text: "Open Houses" },
   { image: "/images/website_assets-02.webp", text: "Client Gifts" },
@@ -10,18 +9,19 @@ const uses = [
 
 const UsesBanner: React.FC = () => {
   return (
-    <section className="uses-grid">
+    <section className="grid grid-cols-4 gap-4 lg:grid-cols-2 sm:grid-cols-1">
       {uses.map((u, i) => (
-        <article className="use-card" key={i}>
-          <div className="media">
+        <article key={i} className="flex flex-col items-center">
+          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl">
             <img
               src={u.image}
               alt={u.text}
               loading="lazy"
               decoding="async"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
-          <p className="caption">{u.text}</p>
+          <p className="mt-2 text-center font-semibold">{u.text}</p>
         </article>
       ))}
     </section>
