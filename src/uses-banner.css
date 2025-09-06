@@ -1,0 +1,39 @@
+.uses-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 1024px) {
+  .uses-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .uses-grid { grid-template-columns: 1fr; }
+}
+
+.use-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Keeps a consistent visual height, crops cleanly */
+.use-card .media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;           /* change ratio if you like */
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.use-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* crop without distortion */
+}
+
+.use-card .caption {
+  text-align: center;
+  font-weight: 600;
+}
