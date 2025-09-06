@@ -1,29 +1,30 @@
-// src/components/UsesBanner.tsx
-import React from 'react';
+import React from "react";
 
-// adjust the relative paths as needed
-import imgOpenHouses from '../assets/website_assets-01.webp';
-import imgClientGifts from '../assets/website_assets-02.webp';
-import imgOfficeWelcome from '../assets/website_assets-03.webp';
-import imgClosingGifts from '../assets/website_assets-04.webp';
+// If you’re using public/ images, use root-relative URLs:
+const uses = [
+  { image: "/images/website_assets-01.webp", text: "Open Houses" },
+  { image: "/images/website_assets-02.webp", text: "Client Gifts" },
+  { image: "/images/website_assets-03.webp", text: "Office Welcome" },
+  { image: "/images/website_assets-04.webp", text: "Closing Gifts" },
+];
 
 const UsesBanner: React.FC = () => {
-  const uses = [
-    { image: imgOpenHouses, text: 'Open Houses' },
-    { image: imgClientGifts, text: 'Client Gifts' },
-    { image: imgOfficeWelcome, text: 'Office Welcome' },
-    { image: imgClosingGifts, text: 'Closing Gifts' },
-  ];
-
   return (
-    <div className="uses-banner">
+    <section className="uses-grid">
       {uses.map((u, i) => (
-        <div key={i} className="use">
-          <img src={u.image} alt={u.text} />
-          <p>{u.text}</p>
-        </div>
+        <article className="use-card" key={i}>
+          <div className="media">
+            <img
+              src={u.image}
+              alt={u.text}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p className="caption">{u.text}</p>
+        </article>
       ))}
-    </div>
+    </section>
   );
 };
 
